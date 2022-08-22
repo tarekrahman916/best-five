@@ -19,7 +19,11 @@
     object-fit: cover;
 }
 
-.input{
+/* .input{
     width: 250px;
     
+} */
+
+li{
+    line-height: 2em;
 }
