@@ -19,10 +19,11 @@
     object-fit: cover;
 }
 
-/* .input{
-    width: 250px;
-    
-} */
+hr{
+    border: none;
+    border-bottom: 5px solid #FF5E19;
+    opacity: 75;
+}
 
 li{
     line-height: 2em;

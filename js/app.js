@@ -1,4 +1,5 @@
 //-----Common Function------
+
 function getInputFieldValue(inputId) {
     const inputField=document.getElementById(inputId);
     const inputFieldValueString=inputField.value ;
@@ -17,9 +18,11 @@ const playerArr=[];
 
 
 //Display selected Player 
+
 const selectPlayerBtn=document.getElementsByClassName('select-btn');
 
 for(const selectBtn of selectPlayerBtn){
+
     selectBtn.addEventListener('click',function(event){
         
         const playerName=event.target.parentNode.parentNode.children[1].children[0].innerText;
@@ -47,3 +50,26 @@ for(const selectBtn of selectPlayerBtn){
     })
     
 }
+
+//Players Expense
+
+document.getElementById('calculate-btn').addEventListener('click',function(){
+        
+    const perPlayerFare=getInputFieldValue('per-player-fare-input')
+ 
+    let playersCost;
+    if (isNaN(perPlayerFare) || perPlayerFare < 0) {
+        alert('Please Input Valid Number')
+        return;
+    }else{
+       playersCost= perPlayerFare * playerArr.length;
+      
+    }
+    console.log(playersCost);
+    
+
+    setElementsValue('players-expense-element',playersCost);
+
+    document.getElementById('manager-fare-input').value='';
+    document.getElementById('coach-fare-input').value='';
+})
