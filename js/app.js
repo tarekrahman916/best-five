@@ -73,3 +73,25 @@ document.getElementById('calculate-btn').addEventListener('click',function(){
     document.getElementById('manager-fare-input').value='';
     document.getElementById('coach-fare-input').value='';
 })
+
+// Total Expense Calculate
+
+function totalExpenseCalculate() {
+    const playersExpenseElement=document.getElementById('players-expense-element');
+    const totalPlayersExpenseString=playersExpenseElement.innerText;
+    const totalPlayersExpense=parseInt(totalPlayersExpenseString);
+
+    const managerExpense=getInputFieldValue('manager-fare-input');
+    const coachExpense=getInputFieldValue('coach-fare-input');
+
+    let totalExpenseAmount;
+
+    if ((isNaN(managerExpense) || isNaN(coachExpense)) || (managerExpense < 0 || coachExpense < 0) || totalPlayersExpense === 0) {
+        alert('Please Input a Valid Number');
+        return
+    }else{
+         totalExpenseAmount= totalPlayersExpense + managerExpense + coachExpense;
+    }
+    setElementsValue('total-expense',totalExpenseAmount);
+    
+}
