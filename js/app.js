@@ -114,4 +114,5 @@ function totalExpenseCalculate() {
     }
     setElementsValue('total-expense',totalExpenseAmount);
     
+
 }
