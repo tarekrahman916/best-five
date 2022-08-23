@@ -13,6 +13,22 @@ const element=document.getElementById(elementId);
       element.innerText=value;
 }
 
+function convertToRoman(num) 
+{
+  let romans = 
+  [
+    ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"], 
+    ["X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX","XC"], 
+    ["C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"],
+    ["M"],
+  ];
+
+  let split = num.toString().split('').reverse();
+
+  return split.map((n, i) => i === 3 ? `${romans[i][0].repeat(parseInt(n))}`: n > 0 ? romans[i][parseInt(n) - 1] : '').reverse().join('');
+
+}
+
 
 const playerArr=[];
 
@@ -26,6 +42,7 @@ for(const selectBtn of selectPlayerBtn){
     selectBtn.addEventListener('click',function(event){
         
         const playerName=event.target.parentNode.parentNode.children[1].children[0].innerText;
+        const selectPlayerQuantity=document.getElementById('selected-player-quantity');
         
         const selectedPlayerElements=document.getElementById('selected-player');
         const li=document.createElement('li');
@@ -35,6 +52,7 @@ for(const selectBtn of selectPlayerBtn){
             alert('You can not select more than 5 player.')
             return
         }else{
+            selectPlayerQuantity.innerText=convertToRoman(playerArr.length+1);
             selectedPlayerElements.appendChild(li);
         }
         
